@@ -177,7 +177,7 @@ namespace EdB.PrepareCarefully {
         }
 
         public RenderTexture GetPortrait(Vector2 size) {
-            return PortraitsCache.Get(Pawn, size, Rot4.South, new Vector3());
+            return PortraitsCache.Get(Pawn, size, Rot4.South);
         }
 
         public void InitializeWithPawn(Pawn pawn) {
