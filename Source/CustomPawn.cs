@@ -13,7 +13,7 @@ namespace EdB.PrepareCarefully {
         public ThingDef conflict;
     }
 
-    public class CustomPawn {
+    public class CustomPawn : Pawn {
         // The pawn's skill values before customization, without modifiers for backstories and traits.
         // These values are saved so that the user can click the "Reset" button to restore them.
         protected Dictionary<SkillDef, int> originalSkillLevels = new Dictionary<SkillDef, int>();
