@@ -130,7 +130,6 @@ namespace EdB.PrepareCarefully {
             foreach (var customPawn in state.Pawns) {
                 if (customPawn.Type == CustomPawnType.Colonist) {
                     customPawn.Pawn.SetFactionDirect(Faction.OfPlayer);
-                    customPawn.Pawn.Ideo.id = Faction.OfPlayer.ideos.PrimaryIdeo.id;
                     if (customPawn.Pawn.workSettings == null) {
                         customPawn.Pawn.workSettings = new Pawn_WorkSettings(customPawn.Pawn);
                     }

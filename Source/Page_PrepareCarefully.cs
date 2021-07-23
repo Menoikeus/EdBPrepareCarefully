@@ -397,6 +397,8 @@ namespace EdB.PrepareCarefully {
             tabViewPawns.PanelTraits.TraitsRandomized += pawnController.RandomizeTraits;
             tabViewPawns.PanelTraits.TraitsRandomized += () => { tabViewPawns.PanelTraits.ScrollToTop(); };
 
+            tabViewPawns.PanelIdeology.IdeoChanged += pawnController.UpdateIdeo;
+
             // Instrument the equipment tab view.
             ControllerEquipment equipment = controller.SubcontrollerEquipment;
 

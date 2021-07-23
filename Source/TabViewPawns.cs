@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using Verse;
 namespace EdB.PrepareCarefully {
@@ -16,6 +16,7 @@ namespace EdB.PrepareCarefully {
         public PanelSkills PanelSkills { get; set; }
         public PanelIncapableOf PanelIncapable { get; set; }
         public PanelLoadSave PanelSaveLoad { get; set; }
+        public PanelIdeology PanelIdeology { get; set; }
 
         public TabViewPawns() {
             PanelColonyPawns = new PanelColonyPawnList();
@@ -31,6 +32,7 @@ namespace EdB.PrepareCarefully {
             PanelSkills = new PanelSkills();
             PanelIncapable = new PanelIncapableOf();
             PanelSaveLoad = new PanelLoadSave();
+            PanelIdeology = new PanelIdeology();
         }
 
         public override string Name {
@@ -59,6 +61,7 @@ namespace EdB.PrepareCarefully {
                 PanelTraits.Draw(state);
                 PanelHealth.Draw(state);
                 PanelSkills.Draw(state);
+                PanelIdeology.Draw(state);
                 PanelIncapable.Draw(state);
             }
         }
@@ -110,18 +113,37 @@ namespace EdB.PrepareCarefully {
             float backstoryTop = PanelFaction.PanelRect.yMax + (pawnListMode == PawnListMode.WorldPawnsMaximized ? panelMargin.y : 0);
             PanelBackstory.Resize(new Rect(PanelFaction.PanelRect.xMin, backstoryTop,
                 columnSize2, 95));
+
+            float traitsHeight = pawnListMode == PawnListMode.WorldPawnsMaximized ? 112 : 142;
             PanelTraits.Resize(new Rect(PanelBackstory.PanelRect.xMin, PanelBackstory.PanelRect.yMax + panelMargin.y,
-                columnSize2, 142));
-            float healthHeight = pawnListMode == PawnListMode.WorldPawnsMaximized ? 147 : 229;
-            PanelHealth.Resize(new Rect(PanelBackstory.PanelRect.xMin, PanelTraits.PanelRect.yMax + panelMargin.y,
-                columnSize2, healthHeight));
-            
-            // Skills and Incapable Of
-            float columnSize3 = 218;
-            PanelSkills.Resize(new Rect(PanelFaction.PanelRect.xMax + panelMargin.x, PanelFaction.PanelRect.yMin,
-                columnSize3, 362));
-            PanelIncapable.Resize(new Rect(PanelSkills.PanelRect.xMin, PanelSkills.PanelRect.yMax + panelMargin.y,
-                columnSize3, 116));
+                columnSize2, traitsHeight));
+            if (!ModsConfig.IdeologyActive) {
+                float healthHeight = pawnListMode == PawnListMode.WorldPawnsMaximized ? 147 : 229;
+                PanelHealth.Resize(new Rect(PanelBackstory.PanelRect.xMin, PanelTraits.PanelRect.yMax + panelMargin.y,
+                    columnSize2, healthHeight));
+
+                // Skills and Incapable Of
+                float columnSize3 = 218;
+                PanelSkills.Resize(new Rect(PanelFaction.PanelRect.xMax + panelMargin.x, PanelFaction.PanelRect.yMin,
+                    columnSize3, 362));
+                PanelIncapable.Resize(new Rect(PanelSkills.PanelRect.xMin, PanelSkills.PanelRect.yMax + panelMargin.y,
+                    columnSize3, 116));
+            }
+            else {
+                float incapableHeight = 80;
+                float healthHeight = (pawnListMode == PawnListMode.WorldPawnsMaximized ? 177 : 229) - incapableHeight - panelMargin.y;
+                PanelHealth.Resize(new Rect(PanelBackstory.PanelRect.xMin, PanelTraits.PanelRect.yMax + panelMargin.y,
+                    columnSize2, healthHeight));
+                PanelIncapable.Resize(new Rect(PanelBackstory.PanelRect.xMin, PanelHealth.PanelRect.yMax + panelMargin.y,
+                    columnSize2, incapableHeight));
+
+                // Skills and Incapable Of
+                float columnSize3 = 218;
+                PanelSkills.Resize(new Rect(PanelFaction.PanelRect.xMax + panelMargin.x, PanelFaction.PanelRect.yMin,
+                    columnSize3, 362));
+                PanelIdeology.Resize(new Rect(PanelSkills.PanelRect.xMin, PanelSkills.PanelRect.yMax + panelMargin.y,
+                    columnSize3, 116));
+            }
         }
 
         public void ResizeTabView() {

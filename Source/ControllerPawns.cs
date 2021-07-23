@@ -377,5 +377,10 @@ namespace EdB.PrepareCarefully {
         public void AddImplant(Implant implant) {
             state.CurrentPawn.AddImplant(implant);
         }
+
+        // Ideo-related actions
+        public void UpdateIdeo(Ideo ideo) {
+            state.CurrentPawn.OriginalIdeo = ideo;
+        }
     }
 }

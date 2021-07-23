@@ -317,6 +317,8 @@ You can play the game with your colonists as they are, but you will be asked to 
   <EdB.PC.Panel.Traits.Tip.Conflict.List.2> - {0}\n - {1}</EdB.PC.Panel.Traits.Tip.Conflict.List.2>
   <EdB.PC.Panel.Traits.Tip.Conflict.List.Many> - {0}\n{1}</EdB.PC.Panel.Traits.Tip.Conflict.List.Many>
   <EdB.PC.Panel.Traits.Tip.Conflict.List.Last> - {0}\n - {1}</EdB.PC.Panel.Traits.Tip.Conflict.List.Last>
+
+  <EdB.PC.Panel.Ideology.None>No ideologies</EdB.PC.Panel.Ideology.None>
   
   <EdB.PC.TabView.Animals.Title>Animals</EdB.PC.TabView.Animals.Title>
   <EdB.PC.TabView.Equipment.Title>Equipment</EdB.PC.TabView.Equipment.Title>
