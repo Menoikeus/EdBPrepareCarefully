@@ -73,6 +73,10 @@ namespace EdB.PrepareCarefully {
             else {
                 GUI.color = customPawn.OriginalIdeo.Color;
                 GUI.DrawTexture(RectIdeologyIcon, customPawn.OriginalIdeo.Icon);
+
+                if (Widgets.ButtonInvisible(RectIdeologyIcon)) {
+                    Find.WindowStack.Add((Window)new Dialog_IdeosDuringLanding());
+                }
             }
 
             int originalIdeoIndex = ideos.IndexOf(customPawn.OriginalIdeo);
