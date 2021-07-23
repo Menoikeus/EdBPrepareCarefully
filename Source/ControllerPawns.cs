@@ -293,6 +293,7 @@ namespace EdB.PrepareCarefully {
         public void AddFactionPawn(PawnKindDef kindDef, bool startingPawn) {
             FactionDef factionDef = kindDef.defaultFactionType;
             Faction faction = PrepareCarefully.Instance.Providers.Factions.GetFaction(factionDef);
+            Ideo ideo = Faction.OfPlayer.ideos.PrimaryIdeo;
 
             // Workaround to force pawn generation to skip adding weapons to the pawn.
             // Might be a slightly risky hack, but the finally block should guarantee that
@@ -306,6 +307,7 @@ namespace EdB.PrepareCarefully {
                 pawn = randomizer.GeneratePawn(new PawnGenerationRequestWrapper() {
                     Faction = faction,
                     KindDef = kindDef,
+                    Ideo = ideo,
                     Context = PawnGenerationContext.NonPlayer,
                     WorldPawnFactionDoesntMatter = false
                 }.Request);
@@ -343,6 +345,7 @@ namespace EdB.PrepareCarefully {
             CustomPawn customPawn = new CustomPawn(pawn);
             customPawn.OriginalKindDef = kindDef;
             customPawn.OriginalFactionDef = faction.def;
+            customPawn.OriginalIdeo = pawn.ideo.Ideo;
             pawn.SetFaction(Faction.OfPlayer);
 
             customPawn.Type = startingPawn ? CustomPawnType.Colonist : CustomPawnType.World;
@@ -351,6 +354,10 @@ namespace EdB.PrepareCarefully {
                 if (customFaction != null) {
                     customPawn.Faction = customFaction;
                 }
+            }
+            if (customPawn.OriginalIdeo == null) {
+                FactionIdeosTracker factionIdeos = new FactionIdeosTracker();
+                customPawn.OriginalIdeo = factionIdeos.PrimaryIdeo;
             }
 
             PrepareCarefully.Instance.AddPawn(customPawn);

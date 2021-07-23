@@ -12,6 +12,8 @@ namespace EdB.PrepareCarefully {
     class PawnGenerationRequestWrapper {
         private PawnKindDef kindDef = Faction.OfPlayer.def.basicMemberKind;
         private Faction faction = Faction.OfPlayer;
+        static FactionIdeosTracker factionIdeosTracker = new FactionIdeosTracker();
+        private Ideo ideo = factionIdeosTracker.PrimaryIdeo;
         private PawnGenerationContext context = PawnGenerationContext.PlayerStarter;
         private float? fixedBiologicalAge = null;
         private float? fixedChronologicalAge = null;
@@ -61,8 +63,10 @@ namespace EdB.PrepareCarefully {
                 fixedGender, // Gender ? fixedGender = null
                 null, // float ? fixedMelanin = null
                 null, // string fixedLastName = null
-                null, //string fixedBirthName = null, 
-                null //RoyalTitleDef fixedTitle = null
+                null, // string fixedBirthName = null, 
+                null, // RoyalTitleDef fixedTitle = null
+                ideo, // Ideo fixedIdeo = null
+                false // bool forceNoIdeo = false
             );
         }
         public PawnGenerationRequest Request {
@@ -80,6 +84,13 @@ namespace EdB.PrepareCarefully {
                 faction = value;
             }
         }
+
+        public Ideo Ideo {
+            set {
+                ideo = value;
+            }
+        }
+
         public PawnGenerationContext Context {
             set {
                 context = value;
@@ -110,5 +121,6 @@ namespace EdB.PrepareCarefully {
                 mustBeCapableOfViolence = value;
             }
         }
+
     }
 }

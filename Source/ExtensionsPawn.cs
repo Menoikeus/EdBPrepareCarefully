@@ -33,6 +33,7 @@ namespace EdB.PrepareCarefully {
             Pawn result = (Pawn)ThingMaker.MakeThing(source.kindDef.race, null);
             result.kindDef = source.kindDef;
             result.SetFactionDirect(source.Faction);
+            result.ideo = source.ideo;
             PawnComponentsUtility.CreateInitialComponents(result);
 
             // Copy gender.

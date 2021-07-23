@@ -13,7 +13,7 @@ namespace EdB.PrepareCarefully {
         public ThingDef conflict;
     }
 
-    public class CustomPawn : Pawn {
+    public class CustomPawn {
         // The pawn's skill values before customization, without modifiers for backstories and traits.
         // These values are saved so that the user can click the "Reset" button to restore them.
         protected Dictionary<SkillDef, int> originalSkillLevels = new Dictionary<SkillDef, int>();
@@ -58,6 +58,7 @@ namespace EdB.PrepareCarefully {
         protected CustomFaction faction = null;
         protected PawnKindDef originalKindDef = null;
         protected FactionDef originalFactionDef = null;
+        protected Ideo originalIdeo = null;
 
         public CustomPawn() {
             GenerateId();
@@ -113,6 +114,14 @@ namespace EdB.PrepareCarefully {
             }
         }
 
+        public Ideo OriginalIdeo {
+            get {
+                return originalIdeo;
+            }
+            set {
+                originalIdeo = value;
+            }
+        }
         public BodyTypeDef BodyType {
             get {
                 return pawn.story.bodyType;
@@ -183,11 +192,12 @@ namespace EdB.PrepareCarefully {
 
         public void InitializeWithPawn(Pawn pawn) {
             this.pawn = pawn;
+            FactionIdeosTracker factionIdeosTracker = new FactionIdeosTracker();
             this.pawn.ClearCaches();
 
             this.originalKindDef = pawn.kindDef;
             this.originalFactionDef = pawn.Faction != null ? pawn.Faction.def : null;
-
+            this.originalIdeo = factionIdeosTracker.PrimaryIdeo != null ? pawn.Ideo : null;
             PrepareCarefully.Instance.Providers.Health.GetOptions(this);
 
             // Set the skills.
