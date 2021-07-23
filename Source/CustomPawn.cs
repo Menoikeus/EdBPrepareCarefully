@@ -188,8 +188,8 @@ namespace EdB.PrepareCarefully {
         }
 
         public RenderTexture GetPortrait(Vector2 size) {
-            PortraitsCache.SetDirty(Pawn);
-            return PortraitsCache.Get(Pawn, size, Rot4.South);
+            PortraitsCache.Clear();
+            return PortraitsCache.Get(pawn, size, Rot4.South);
         }
 
         public void InitializeWithPawn(Pawn pawn) {
@@ -198,13 +198,12 @@ namespace EdB.PrepareCarefully {
 
             this.originalKindDef = pawn.kindDef;
             this.originalFactionDef = pawn.Faction != null ? pawn.Faction.def : null;
-            this.originalIdeo = this.pawn.Faction.ideos.PrimaryIdeo != null ? pawn.Ideo : null;
+            this.originalIdeo = this.pawn.Faction.ideos?.PrimaryIdeo != null ? pawn.Ideo : null;
             PrepareCarefully.Instance.Providers.Health.GetOptions(this);
 
             // Set the skills.
             InitializeSkillLevelsAndPassions();
             ComputeSkillLevelModifiers();
-
             // Clear all of the pawn layer colors.  The apparel colors will be set a little later
             // when we initialize the apparel layer.
             colors.Clear();
