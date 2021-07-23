@@ -12,7 +12,7 @@ namespace EdB.PrepareCarefully {
         public SaveRecordFactionV4 faction;
         public string pawnKindDef;
         public string originalFactionDef;
-        public string originalIdeo;
+        public Ideo originalIdeo;
         public string thingDef;
         public Gender gender;
         public string adulthood;
@@ -64,7 +64,7 @@ namespace EdB.PrepareCarefully {
             }
             this.pawnKindDef = pawn.OriginalKindDef?.defName ?? pawn.Pawn.kindDef.defName;
             this.originalFactionDef = pawn.OriginalFactionDef?.defName;
-            this.originalIdeo = pawn.OriginalIdeo?.culture.defName;
+            this.originalIdeo = pawn.OriginalIdeo;
             this.gender = pawn.Gender;
             this.adulthood = pawn.Adulthood?.identifier ?? pawn.LastSelectedAdulthoodBackstory?.identifier;
             this.childhood = pawn.Childhood?.identifier;
@@ -141,7 +141,7 @@ namespace EdB.PrepareCarefully {
             Scribe_Deep.Look<SaveRecordFactionV4>(ref this.faction, "faction");
             Scribe_Values.Look<string>(ref this.pawnKindDef, "pawnKindDef", null, false);
             Scribe_Values.Look<string>(ref this.originalFactionDef, "originalFactionDef", null, false);
-            Scribe_Values.Look<string>(ref this.originalIdeo, "originalIdeo", null, false);
+            Scribe_Deep.Look<Ideo>(ref this.originalIdeo, "originalIdeo", null, false);
             Scribe_Values.Look<string>(ref this.thingDef, "thingDef", ThingDefOf.Human.defName, false);
             Scribe_Values.Look<Gender>(ref this.gender, "gender", Gender.Male, false);
             Scribe_Values.Look<string>(ref this.childhood, "childhood", null, false);
