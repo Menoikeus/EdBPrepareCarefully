@@ -183,7 +183,7 @@ namespace EdB.PrepareCarefully {
                 Pawn pawn2 = new Pawn();
                 originalIdeo = pawn2.ideo.Ideo;
                 if (originalIdeo == null) {
-                    Logger.Warning("Pawn Ideo definition for the saved character (" + record.pawnKindDef + ") not found.  Picking a random player colony pawn kind definition.");
+                    Logger.Warning("Pawn Ideo definition for the saved character (" + record.originalIdeo + ") not found.  Picking a random player colony pawn kind definition.");
                     originalIdeo = Faction.OfPlayer.ideos.PrimaryIdeo;
                     if (originalIdeo == null) {
                         return null;
