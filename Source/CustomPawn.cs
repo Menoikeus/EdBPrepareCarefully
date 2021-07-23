@@ -120,6 +120,8 @@ namespace EdB.PrepareCarefully {
             }
             set {
                 originalIdeo = value;
+                this.pawn.ideo = new Pawn_IdeoTracker(this.pawn);
+                this.pawn.ideo.SetIdeo(value);
             }
         }
         public BodyTypeDef BodyType {
