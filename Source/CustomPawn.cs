@@ -192,12 +192,11 @@ namespace EdB.PrepareCarefully {
 
         public void InitializeWithPawn(Pawn pawn) {
             this.pawn = pawn;
-            FactionIdeosTracker factionIdeosTracker = new FactionIdeosTracker();
             this.pawn.ClearCaches();
 
             this.originalKindDef = pawn.kindDef;
             this.originalFactionDef = pawn.Faction != null ? pawn.Faction.def : null;
-            this.originalIdeo = factionIdeosTracker.PrimaryIdeo != null ? pawn.Ideo : null;
+            this.originalIdeo = this.pawn.Faction.ideos.PrimaryIdeo != null ? pawn.Ideo : null;
             PrepareCarefully.Instance.Providers.Health.GetOptions(this);
 
             // Set the skills.
