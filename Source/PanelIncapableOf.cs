@@ -20,7 +20,7 @@ namespace EdB.PrepareCarefully {
             base.Resize(rect);
             Vector2 panelPadding = new Vector2(11, 16);
             float textWidth = PanelRect.width - panelPadding.x * 2;
-            float textHeight = PanelRect.height - BodyRect.y - panelPadding.y;
+            float textHeight = PanelRect.height - BodyRect.y;
             RectText = new Rect(panelPadding.x, BodyRect.y, textWidth, textHeight);
         }
         protected override void DrawPanelContent(State state) {
