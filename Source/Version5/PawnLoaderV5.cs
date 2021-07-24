@@ -322,6 +322,24 @@ namespace EdB.PrepareCarefully {
                 partialFailure = true;
             }
 
+            TattooDef fT = DefDatabase<TattooDef>.GetNamedSilentFail(record.faceTattooDef ?? "NoTattoo_Face");
+            if (fT != null) {
+                pawn.FaceTattooDef = fT;
+            }
+            else {
+                Logger.Warning("Could not load face tattoo definition \"" + record.faceTattooDef + "\"");
+                partialFailure = true;
+            }
+
+            TattooDef bT = DefDatabase<TattooDef>.GetNamedSilentFail(record.bodyTattooDef ?? "NoTattoo_Body");
+            if (bT != null) {
+                pawn.BodyTattooDef = bT;
+            }
+            else {
+                Logger.Warning("Could not load body tattoo definition \"" + record.bodyTattooDef + "\"");
+                partialFailure = true;
+            }
+
             pawn.HeadGraphicPath = record.headGraphicPath;
             if (pawn.Pawn.story != null) {
                 pawn.Pawn.story.hairColor = record.hairColor;

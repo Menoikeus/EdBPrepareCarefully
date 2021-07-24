@@ -1290,6 +1290,26 @@ namespace EdB.PrepareCarefully {
             }
         }
 
+        public TattooDef FaceTattooDef {
+            get {
+                return pawn.style.FaceTattoo;
+            }
+            set {
+                pawn.style.FaceTattoo = value;
+                MarkPortraitAsDirty();
+            }
+        }
+
+        public TattooDef BodyTattooDef {
+            get {
+                return pawn.style.BodyTattoo;
+            }
+            set {
+                pawn.style.BodyTattoo = value;
+                MarkPortraitAsDirty();
+            }
+        }
+
         public int ChronologicalAge {
             get {
                 return pawn.ageTracker.AgeChronologicalYears;

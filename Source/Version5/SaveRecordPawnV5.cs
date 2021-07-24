@@ -22,6 +22,8 @@ namespace EdB.PrepareCarefully {
         public float melanin;
         public string hairDef;
         public string beardDef;
+        public string faceTattooDef;
+        public string bodyTattooDef;
         public Color hairColor;
         public string headGraphicPath;
         public string bodyType;
@@ -73,6 +75,8 @@ namespace EdB.PrepareCarefully {
             this.melanin = pawn.Pawn.story.melanin;
             this.hairDef = pawn.HairDef.defName;
             this.beardDef = pawn.BeardDef?.defName ?? "NoBeard";
+            this.faceTattooDef = pawn.FaceTattooDef?.defName ?? "NoTattoo_Face";
+            this.bodyTattooDef = pawn.BodyTattooDef?.defName ?? "NoTattoo_Body";
             this.hairColor = pawn.Pawn.story.hairColor;
             this.headGraphicPath = pawn.HeadGraphicPath;
             this.bodyType = pawn.BodyType.defName;
