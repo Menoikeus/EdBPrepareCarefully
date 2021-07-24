@@ -873,10 +873,13 @@ namespace EdB.PrepareCarefully {
         protected void SelectNextPawnLayerOption(CustomPawn customPawn, int direction) {
             int optionCount = selectedPawnLayer.Options.Count;
             int? optionalIndex = selectedPawnLayer.GetSelectedIndex(customPawn);
+            int index;
             if (optionalIndex == null) {
-                return;
+                index = 0;
             }
-            int index = optionalIndex.Value;
+            else {
+                index = optionalIndex.Value;
+            }
             index += direction;
             if (index < 0) {
                 index = optionCount - 1;
