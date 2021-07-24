@@ -62,6 +62,7 @@
     <Compile Include="Source\AnimalDatabase.cs" />
     <Compile Include="Source\AnimalRecord.cs" />
     <Compile Include="Source\AnimalRecordKey.cs" />
+    <Compile Include="Source\OptionsBeard.cs" />
     <Compile Include="Source\PanelIdeology.cs" />
     <Compile Include="Source\ColonistFiles.cs" />
     <Compile Include="Source\ColonistSaver.cs" />
@@ -118,11 +119,13 @@
     <Compile Include="Source\PawnLayer.cs" />
     <Compile Include="Source\PawnLayerAlienAddon.cs" />
     <Compile Include="Source\PawnLayerBody.cs" />
+    <Compile Include="Source\PawnLayerBeard.cs" />
     <Compile Include="Source\PawnLayerHair.cs" />
     <Compile Include="Source\PawnLayerHead.cs" />
     <Compile Include="Source\PawnLayerOption.cs" />
     <Compile Include="Source\PawnLayerOptionAlienAddon.cs" />
     <Compile Include="Source\PawnLayerOptionBody.cs" />
+    <Compile Include="Source\PawnLayerOptionBeard.cs" />
     <Compile Include="Source\PawnLayerOptionHair.cs" />
     <Compile Include="Source\PawnLayerOptionHead.cs" />
     <Compile Include="Source\PawnListMode.cs" />
@@ -133,6 +136,7 @@
     <Compile Include="Source\ProviderAgeLimits.cs" />
     <Compile Include="Source\ProviderAlienRaces.cs" />
     <Compile Include="Source\ProviderApparel.cs" />
+    <Compile Include="Source\ProviderBeard.cs" />
     <Compile Include="Source\ProviderHealthOptions.cs" />
     <Compile Include="Source\ProviderBodyTypes.cs" />
     <Compile Include="Source\ProviderHair.cs" />

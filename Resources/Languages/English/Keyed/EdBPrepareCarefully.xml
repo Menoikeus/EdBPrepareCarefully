@@ -226,6 +226,7 @@ Before reporting an error, please try to figure out which mod may be causing the
   <EdB.PC.Pawn.PawnLayer.BodyType>Body Type</EdB.PC.Pawn.PawnLayer.BodyType>
   <EdB.PC.Pawn.PawnLayer.BottomClothingLayer>Bottom Clothing Layer</EdB.PC.Pawn.PawnLayer.BottomClothingLayer>
   <EdB.PC.Pawn.PawnLayer.Hair>Hair</EdB.PC.Pawn.PawnLayer.Hair>
+  <EdB.PC.Pawn.PawnLayer.Beard>Beard</EdB.PC.Pawn.PawnLayer.Beard>
   <EdB.PC.Pawn.PawnLayer.Hat>Hat</EdB.PC.Pawn.PawnLayer.Hat>
   <EdB.PC.Pawn.PawnLayer.HeadType>Head Type</EdB.PC.Pawn.PawnLayer.HeadType>
   <EdB.PC.Pawn.PawnLayer.MiddleClothingLayer>Middle Clothing Layer</EdB.PC.Pawn.PawnLayer.MiddleClothingLayer>
