@@ -36,6 +36,7 @@ namespace EdB.PrepareCarefully {
         private List<PawnLayer> InitializeDefaultPawnLayers(ThingDef pawnDef, Gender gender) {
             List<PawnLayer> defaultLayers = new List<PawnLayer>() {
                 InitializeHairLayer(pawnDef, gender),
+                InitializeBeardLayer(pawnDef, gender),
                 InitializeHeadLayer(pawnDef, gender),
                 InitializeBodyLayer(pawnDef, gender),
                 pantsLayer,
@@ -50,6 +51,7 @@ namespace EdB.PrepareCarefully {
         private List<PawnLayer> InitializeAlienPawnLayers(ThingDef pawnDef, Gender gender, AlienRace race) {
             List<PawnLayer> layers = new List<PawnLayer>() {
                 InitializeHairLayer(pawnDef, gender),
+                InitializeBeardLayer(pawnDef, gender),
                 InitializeHeadLayer(pawnDef, gender),
                 InitializeBodyLayer(pawnDef, gender),
             };
@@ -99,6 +101,22 @@ namespace EdB.PrepareCarefully {
             foreach (var def in hairDefs) {
                 PawnLayerOptionHair option = new PawnLayerOptionHair();
                 option.HairDef = def;
+                options.Add(option);
+            }
+            return options;
+        }
+        private PawnLayer InitializeBeardLayer(ThingDef pawnDef, Gender gender) {
+            PawnLayer result = new PawnLayerBeard() { Name = "Beard", Label = ("EdB.PC.Pawn.PawnLayer.Beard").Translate() };
+            result.Options = InitializeBeardOptions(pawnDef, gender);
+            result.ColorSwatches = PrepareCarefully.Instance.Providers.Hair.GetHairsForRace(pawnDef).Colors;
+            return result;
+        }
+        private List<PawnLayerOption> InitializeBeardOptions(ThingDef pawnDef, Gender gender) {
+            List<PawnLayerOption> options = new List<PawnLayerOption>();
+            List<BeardDef> beardDefs = PrepareCarefully.Instance.Providers.Beard.GetBeards(pawnDef, gender);
+            foreach (var def in beardDefs) {
+                PawnLayerOptionBeard option = new PawnLayerOptionBeard();
+                option.BeardDef = def;
                 options.Add(option);
             }
             return options;
