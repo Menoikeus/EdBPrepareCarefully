@@ -313,6 +313,15 @@ namespace EdB.PrepareCarefully {
                 partialFailure = true;
             }
 
+            BeardDef b = DefDatabase<BeardDef>.GetNamedSilentFail(record.beardDef ?? "NoBeard");
+            if (b != null) {
+                pawn.BeardDef = b;
+            }
+            else {
+                Logger.Warning("Could not load beard definition \"" + record.beardDef + "\"");
+                partialFailure = true;
+            }
+
             pawn.HeadGraphicPath = record.headGraphicPath;
             if (pawn.Pawn.story != null) {
                 pawn.Pawn.story.hairColor = record.hairColor;

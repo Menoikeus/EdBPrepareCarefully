@@ -381,6 +381,7 @@ namespace EdB.PrepareCarefully {
 
         public void CopyAppearance(Pawn pawn) {
             this.HairDef = pawn.story.hairDef;
+            this.BeardDef = pawn.style.beardDef;
             this.pawn.story.hairColor = pawn.story.hairColor;
             this.pawn.story.bodyType = pawn.story.bodyType;
             this.HeadGraphicPath = pawn.story.HeadGraphicPath;
@@ -1275,6 +1276,16 @@ namespace EdB.PrepareCarefully {
             }
             set {
                 pawn.story.hairDef = value;
+                MarkPortraitAsDirty();
+            }
+        }
+
+        public BeardDef BeardDef {
+            get {
+                return pawn.style.beardDef;
+            }
+            set {
+                pawn.style.beardDef = value;
                 MarkPortraitAsDirty();
             }
         }

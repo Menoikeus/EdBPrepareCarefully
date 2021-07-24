@@ -21,6 +21,7 @@ namespace EdB.PrepareCarefully {
         public Color skinColor;
         public float melanin;
         public string hairDef;
+        public string beardDef;
         public Color hairColor;
         public string headGraphicPath;
         public string bodyType;
@@ -71,6 +72,7 @@ namespace EdB.PrepareCarefully {
             this.skinColor = pawn.Pawn.story.SkinColor;
             this.melanin = pawn.Pawn.story.melanin;
             this.hairDef = pawn.HairDef.defName;
+            this.beardDef = pawn.BeardDef?.defName ?? "NoBeard";
             this.hairColor = pawn.Pawn.story.hairColor;
             this.headGraphicPath = pawn.HeadGraphicPath;
             this.bodyType = pawn.BodyType.defName;
@@ -153,6 +155,7 @@ namespace EdB.PrepareCarefully {
             Scribe_Values.Look<float>(ref this.melanin, "melanin", -1.0f, false);
             Scribe_Values.Look<string>(ref this.bodyType, "bodyType", null, false);
             Scribe_Values.Look<string>(ref this.hairDef, "hairDef", null, false);
+            Scribe_Values.Look<string>(ref this.beardDef, "beardDef", null, false);
             Scribe_Values.Look<Color>(ref this.hairColor, "hairColor", Color.white, false);
             Scribe_Values.Look<string>(ref this.headGraphicPath, "headGraphicPath", null, false);
             Scribe_Values.Look<string>(ref this.firstName, "firstName", null, false);
